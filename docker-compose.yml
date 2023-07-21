@@ -1,12 +1,12 @@
 version: '3'
 services:
   nginx:
-    image: nginx:latest
+    image: nginx:1.25.1-perl
     container_name: nginx_gateway
     ports:
       - "8080:80"
     env_file:
       - ./env/gateway.env
     volumes:
-      - ./conf/nginx.conf.template:/etc/nginx/nginx.conf.template:ro 
-    #command: /bin/sh -c "envsubst < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
+      # - ./conf/nginx.conf.template:/etc/nginx/nginx.conf.template:ro 
+      - conf/default.conf.template:/etc/nginx/templates/default.conf.template
